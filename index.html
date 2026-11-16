@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#18252b">
+  <meta name="description" content="Uma janela interativa para criar e programar seu próprio mundo.">
+  <title>Minha Janela | Programando Seu Mundo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">⌗</span>
+      <span>MINHA<span>JANELA</span></span>
+    </a>
+
+    <div class="top-caption">
+      <span class="status-dot"></span>
+      MEU UNIVERSO INTERATIVO
+    </div>
+
+    <button class="sound-button" id="soundButton" aria-label="Ativar ou desativar sons">
+      <span id="soundIcon">♫</span>
+    </button>
+  </header>
+
+  <main class="container">
+
+    <section class="intro">
+      <div>
+        <span class="eyebrow">UM MUNDO CRIADO POR VOCÊ</span>
+        <h1>Minha janela,<br><span>meu mundo.</span></h1>
+        <p>
+          Abra a janela da imaginação. Escolha uma paisagem,
+          observe a natureza e dê vida ao seu próprio cenário.
+        </p>
+      </div>
+
+      <div class="intro-decoration">
+        <span>✿</span>
+        <small>UM LUGAR PARA IMAGINAR</small>
+      </div>
+    </section>
+
+    <section class="editor">
+
+      <div class="editor-header">
+        <div>
+          <span class="editor-label">ESPAÇO CRIATIVO</span>
+          <h2>Vista da minha janela</h2>
+        </div>
+
+        <div class="live-indicator">
+          <span></span>
+          <small id="statusText">PRONTO PARA COMEÇAR</small>
+        </div>
+      </div>
+
+      <div class="window-stage" id="windowStage">
+
+        <canvas id="worldCanvas" width="1100" height="700">
+          Seu navegador não suporta o elemento canvas.
+        </canvas>
+
+        <div class="start-overlay" id="startOverlay">
+          <div class="overlay-card">
+            <div class="overlay-icon">🦋</div>
+            <span class="eyebrow">BEM-VINDA AO SEU MUNDO</span>
+            <h2 id="overlayTitle">Sua janela está esperando!</h2>
+            <p id="overlayDescription">
+              Prepare-se para observar uma paisagem cheia de vida.
+              As borboletas vão aparecer e voar pelo seu cenário.
+            </p>
+            <button class="primary-button" id="startButton">
+              ABRIR MINHA JANELA <span>→</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="stage-footer">
+        <span id="sceneMessage">Escolha uma paisagem para começar.</span>
+        <span id="clock">00:00</span>
+      </div>
+
+    </section>
+
+    <section class="control-grid">
+
+      <div class="control-card">
+        <div class="card-heading">
+          <span class="card-icon">🌄</span>
+          <div>
+            <h3>Minha paisagem</h3>
+            <p>Escolha o que deseja ver.</p>
+          </div>
+        </div>
+
+        <label for="landscapeSelect">CENÁRIO</label>
+        <select id="landscapeSelect">
+          <option value="meadow">Campo florido</option>
+          <option value="beach">Praia tropical</option>
+          <option value="mountains">Montanhas</option>
+          <option value="city">Cidade</option>
+        </select>
+      </div>
+
+      <div class="control-card">
+        <div class="card-heading">
+          <span class="card-icon">☀️</span>
+          <div>
+            <h3>Período do dia</h3>
+            <p>Veja o mundo mudar.</p>
+          </div>
+        </div>
+
+        <div class="period-buttons">
+          <button class="period-button active" data-period="day">☀ Dia</button>
+          <button class="period-button" data-period="night">☾ Noite</button>
+        </div>
+      </div>
+
+      <div class="control-card">
+        <div class="card-heading">
+          <span class="card-icon">🌦️</span>
+          <div>
+            <h3>Clima</h3>
+            <p>Escolha o clima da paisagem.</p>
+          </div>
+        </div>
+
+        <select id="weatherSelect">
+          <option value="clear">Ensolarado</option>
+          <option value="rain">Chuvoso</option>
+          <option value="snow">Nevando</option>
+        </select>
+      </div>
+
+      <div class="control-card">
+        <div class="card-heading">
+          <span class="card-icon">🦋</span>
+          <div>
+            <h3>Vida na janela</h3>
+            <p>Adicione mais borboletas.</p>
+          </div>
+        </div>
+
+        <button class="secondary-button full-button" id="addButterflyButton">
+          + Adicionar borboleta
+        </button>
+      </div>
+
+    </section>
+
+    <section class="advanced-panel">
+
+      <div class="advanced-heading">
+        <div>
+          <span class="eyebrow">PERSONALIZE A ANIMAÇÃO</span>
+          <h2>Controle do seu mundo</h2>
+        </div>
+
+        <span class="advanced-decoration">✧</span>
+      </div>
+
+      <div class="advanced-controls">
+
+        <div class="range-control">
+          <div class="range-label">
+            <label for="speedRange">VELOCIDADE DAS BORBOLETAS</label>
+            <output id="speedValue">Normal</output>
+          </div>
+          <input type="range" id="speedRange" min="1" max="5" value="2">
+        </div>
+
+        <div class="range-control">
+          <div class="range-label">
+            <label for="frequencyRange">FREQUÊNCIA DE APARIÇÃO</label>
+            <output id="frequencyValue">Normal</output>
+          </div>
+          <input type="range" id="frequencyRange" min="1" max="5" value="3">
+        </div>
+
+        <div class="action-controls">
+          <button class="secondary-button" id="pauseButton">Ⅱ Pausar</button>
+          <button class="secondary-button" id="resetButton">↻ Reiniciar</button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="statistics">
+
+      <div class="stat-card">
+        <span>🦋</span>
+        <div>
+          <small>BORBOLETAS CRIADAS</small>
+          <strong id="butterflyCount">0</strong>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <span>🌸</span>
+        <div>
+          <small>VISITAS NA JANELA</small>
+          <strong id="visitCount">0</strong>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <span>⏱️</span>
+        <div>
+          <small>TEMPO DE OBSERVAÇÃO</small>
+          <strong id="elapsedTime">00:00</strong>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="message-card">
+      <span class="message-icon">✿</span>
+      <div>
+        <strong>Um mundo de possibilidades.</strong>
+        <p>
+          Cada detalhe pode transformar sua paisagem.
+          Experimente combinações diferentes e crie uma janela única!
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <span>MINHA JANELA © 2026</span>
+      <span>UM PROJETO DE CRIATIVIDADE COM JAVASCRIPT</span>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
